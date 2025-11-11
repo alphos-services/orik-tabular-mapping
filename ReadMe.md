@@ -5,7 +5,6 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](#license)
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](#requirements)
-[![CI](https://img.shields.io/badge/CI-GitHub%20Actions-informational)](#development)
 
 ---
 
