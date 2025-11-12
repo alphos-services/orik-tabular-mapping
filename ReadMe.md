@@ -104,7 +104,7 @@ pip install -e .
 ### Minimal Example
 
 ```python
-from declarative_converter import DeclarativeConverter
+from src.core import DeclarativeConverter
 
 mapping = {
   "columns": {
@@ -131,7 +131,7 @@ df.to_csv("out.csv", index=False)
 ## Developer Quickstart (Builder API)
 
 ```python
-from declarative_converter import MappingBuilder, Rule, PredicateBuilder as P, DeclarativeConverter
+from src.core import MappingBuilder, Rule, PredicateBuilder as P, DeclarativeConverter
 
 mapping = (
   MappingBuilder()
@@ -265,7 +265,7 @@ Rule().merge(Rule().path("meta"), Rule().const({"version": 3}), strategy="overri
 ### UDFs (User-Defined Functions)
 
 ```python
-from declarative_converter import register_udf
+from src.core import register_udf
 register_udf("norm_city", lambda s, c: f"{s.strip().title()} ({c})")
 Rule().udf("norm_city", Rule().const(" berlin "), Rule().path("country"))
 ```
@@ -275,7 +275,7 @@ Rule().udf("norm_city", Rule().const(" berlin "), Rule().path("country"))
 Add power without touching the engine.
 
 ```python
-from declarative_converter import register_operation
+from src.core import register_operation
 def _uppercase(rule, ctx, eval_rule, apply_tail_ops):
     v = eval_rule(rule["uppercase"])
     return apply_tail_ops(str(v).upper() if v is not None else None, rule)
@@ -287,7 +287,7 @@ register_operation("uppercase", _uppercase)
 ### Streaming IO (JSONL → CSV/Parquet)
 
 ```python
-from declarative_converter.io import stream_jsonl_to_csv, stream_jsonl_to_parquet
+from src.core.io import stream_jsonl_to_csv, stream_jsonl_to_parquet
 conv = DeclarativeConverter(mapping)
 stream_jsonl_to_csv(conv, "in.jsonl", "out.csv", batch_size=10_000)
 # requires pyarrow:
@@ -297,7 +297,7 @@ stream_jsonl_to_csv(conv, "in.jsonl", "out.csv", batch_size=10_000)
 ### Tensor Output
 
 ```python
-from declarative_converter import DeclarativeConverter
+from src.core import DeclarativeConverter
 df = DeclarativeConverter(mapping).to_dataframe_single(record)
 tensor = DeclarativeConverter(mapping).to_tensor_single(record)  # numeric/bool columns → torch.float32
 ```
