@@ -1,4 +1,4 @@
-# ORIK – Declarative Tabular Mapping (JSON ➜ DataFrame/CSV/Tensor)
+# ORIK – Declarative Tabular Mapping
 
 > Turn messy, nested **JSON** into clean **tables** — **declaratively**.
 > No brittle ETL code. No vendor lock-in. Just mappings.
