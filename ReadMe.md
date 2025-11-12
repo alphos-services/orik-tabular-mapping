@@ -11,8 +11,6 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-Optional-orange)](#tensor-output)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#contributing)
 
-> If this saves you time, **please ⭐ star the repo** — it helps a ton.
-
 ---
 
 ## Why ORIK?
