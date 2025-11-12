@@ -1,7 +1,7 @@
 import pandas as pd
 
 from src.rest.client import OrikTabularClient
-from src.rest.models import ValidateMappingRequest
+from src.rest.models import ValidateMappingRequest, UploadDataRequest
 
 
 def main():
@@ -60,6 +60,22 @@ def main():
             print(result_df.to_string())
         else:
             print("Sample data is NOT valid according to the mapping / no sample data provided.")
+
+        upload_request = UploadDataRequest(
+            auth_token="",     # Your API token here,
+            mapping_uuid="",   # Your mapping UUID here
+            data=sample_data,  # or a list of data records
+            is_batched=False
+        )
+
+        upload_response = client.upload(
+            request=upload_request
+        )
+        if upload_response.success:
+            print(upload_request.model_dump_json(indent=2))
+            print(f"Upload successful! Processed records: {upload_response.processed_records}")
+        else:
+            print(f"Upload failed: {upload_response.message}")
 
     except Exception as e:
         print(f"Error: {e}")
