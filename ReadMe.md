@@ -35,7 +35,6 @@ Perfect for **IoT telemetry**, **e-commerce**, **events**, **timeseries**, **ann
 * [ORIK: Platform Integration](#orik-platform-integration)
 * [Python API](#python-api)
 * [Examples](#examples)
-* [Project Structure](#project-structure)
 * [Contributing](#contributing)
 * [Code of Conduct](#code-of-conduct)
 * [Security](#security)
@@ -280,7 +279,7 @@ Validates an ORIK Tabular Mapping definition and optionally converts provided sa
 
 #### **Rate Limiting**
 
-The `/otm/validate` endpoint is currently rate-limited to **5 requests per minute per user/IP**.
+The `/otm/validate` endpoint is currently rate-limited to **5 requests per second per user/IP**.
 Clients exceeding this limit will receive a `429 Too Many Requests` response.
 
 ---
@@ -321,28 +320,6 @@ Run any example:
 
 ```bash
 python examples/iot_cold_chain.py
-```
-
----
-
-## Project Structure
-
-```
-.
-├─ src/
-│  ├─ __init__.py                 # exports DeclarativeConverter, validate_mapping, MappingError
-│  ├─ converter.py                # core engine
-│  └─ validation.py               # mapping validator
-├─ examples/
-│  ├─ example_01_iot_cold_chain.py
-│  ├─ example_02_ecommerce_orders.py
-│  ├─ ...
-├─ pyproject.toml
-├─ README.md
-├─ LICENSE
-├─ CONTRIBUTING.md
-├─ CODE_OF_CONDUCT.md
-└─ SECURITY.md
 ```
 
 ---
