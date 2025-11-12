@@ -8,8 +8,8 @@ Use case: Mixed event types in a single stream; normalize to a flat table with t
 
 import json
 
-from src.converter import DeclarativeConverter
-from src.validation import validate_mapping
+from src.engine.converter import DeclarativeConverter
+from src.engine.validation import validate_mapping
 
 mapping_json = r'''
 {

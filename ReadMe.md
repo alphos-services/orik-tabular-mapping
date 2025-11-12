@@ -32,6 +32,7 @@ Perfect for **IoT telemetry**, **e-commerce**, **events**, **timeseries**, **ann
 * [Quickstart](#quickstart)
 * [Mapping Protocol](#mapping-protocol)
 * [Validation](#validation)
+* [ORIK: Platform Integration](#orik-platform-integration)
 * [Python API](#python-api)
 * [Examples](#examples)
 * [Project Structure](#project-structure)
@@ -198,6 +199,101 @@ if not ok:
 * Fails fast on invalid operators/keys
 * Precise error paths (e.g., `$.columns.temp.math[1]`)
 * Recommended to run in CI for all contributed mappings
+
+---
+
+## ORIK: Platform Integration
+
+Super 🙌 — hier ist eine **erweiterte, GitHub-fertige README-Sektion**,
+die du direkt in dein Repository übernehmen kannst.
+
+Sie enthält:
+
+* ✨ **Badges** (PyPI-Version, Build-Status, License, Downloads)
+* ⚠️ **Beta-Hinweis** zur ORIK-Plattform
+* 🧭 **API-Dokumentation** zum `/otm/validate`-Endpoint
+* 💡 **Client Usage Example**
+
+Alles auf **professionellem englischen Niveau**, so wie du es in reifen Open-Source-Projekten (z. B. FastAPI oder OpenAI-SDKs) findest.
+
+---
+
+## 🧩 Orik Tabular Client
+
+> A lightweight Python client for the **ORIK Tabular Mapping API**,  
+> providing easy access to data mapping validation and sample transformation endpoints.
+
+### ⚠️ Beta Notice
+
+> **Important:** The **ORIK Platform** and its related APIs are currently in **active development** and part of an **early beta program**.  
+> During this phase, API behavior, endpoint availability, and response formats may change without prior notice.  
+> Please expect occasional service interruptions or backward-incompatible changes until the platform reaches public release.
+
+---
+
+### 🧭 API Documentation — `/otm/validate`
+
+#### **Endpoint**
+
+`POST /otm/validate`
+
+Validates an ORIK Tabular Mapping definition and optionally converts provided sample data based on that mapping.
+
+#### **Request Body**
+
+| Field               | Type                | Required | Description                                                                 |
+| ------------------- | ------------------- | -------- | --------------------------------------------------------------------------- |
+| `mapping`           | `object`            | ✅ Yes    | The declarative ORIK mapping definition.                                    |
+| `sample_data`       | `object` or `array` | ❌ No     | Example data record(s) to test the mapping.                                 |
+| `sample_is_batched` | `boolean`           | ❌ No     | If `true`, `sample_data` is treated as a list of records. Default: `false`. |
+
+#### Example Request
+
+```json
+{
+  "mapping": {
+    "columns": [
+      {"source": "name", "target": "Name"},
+      {"source": "age", "target": "Age"}
+    ]
+  },
+  "sample_data": {"name": "Alice", "age": 30},
+  "sample_is_batched": false
+}
+```
+
+---
+
+#### **Response**
+
+| Field             | Type            | Description                                               |
+| ----------------- | --------------- | --------------------------------------------------------- |
+| `is_valid`        | `boolean`       | Whether the mapping is valid.                             |
+| `errors`          | `array[string]` | Validation errors, if any.                                |
+| `sample_result`   | `object`        | The converted sample data.                                |
+| `sample_is_valid` | `boolean`       | Whether the sample conversion succeeded.                  |
+| `sample_error`    | `string`        | Message describing the sample conversion result or error. |
+
+#### Example Response
+
+```json
+{
+  "is_valid": true,
+  "errors": [],
+  "sample_result": [
+    {"Name": "Alice", "Age": 30}
+  ],
+  "sample_is_valid": true,
+  "sample_error": "Input data converted successfully."
+}
+```
+
+---
+
+#### **Rate Limiting**
+
+The `/otm/validate` endpoint is currently rate-limited to **5 requests per minute per user/IP**.
+Clients exceeding this limit will receive a `429 Too Many Requests` response.
 
 ---
 

@@ -8,8 +8,8 @@ Use case: Each record contains arrays of readings from multiple sensors; produce
 
 import json
 
-from src.converter import DeclarativeConverter
-from src.validation import validate_mapping
+from src.engine.converter import DeclarativeConverter
+from src.engine.validation import validate_mapping
 
 mapping_json = r'''
 {

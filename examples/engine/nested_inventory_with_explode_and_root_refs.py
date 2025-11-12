@@ -8,8 +8,8 @@ Use case: Turn product records with nested 'batches' into rows for each batch wh
 
 import json
 
-from src.converter import DeclarativeConverter
-from src.validation import validate_mapping
+from src.engine.converter import DeclarativeConverter
+from src.engine.validation import validate_mapping
 
 mapping_json = r'''
 {

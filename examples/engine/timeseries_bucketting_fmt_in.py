@@ -7,8 +7,8 @@ Use case: Producer sends non-ISO timestamps; normalize and bucket by day.
 
 import json
 
-from src.converter import DeclarativeConverter
-from src.validation import validate_mapping
+from src.engine.converter import DeclarativeConverter
+from src.engine.validation import validate_mapping
 
 mapping_json = r'''
 {

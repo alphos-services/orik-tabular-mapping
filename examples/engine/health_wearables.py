@@ -9,8 +9,8 @@ Use case: Normalize patient wearable data with readings per minute.
 
 import json
 
-from src.converter import DeclarativeConverter
-from src.validation import validate_mapping
+from src.engine.converter import DeclarativeConverter
+from src.engine.validation import validate_mapping
 
 mapping_json = r'''
 {
