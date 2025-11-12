@@ -204,18 +204,6 @@ if not ok:
 
 ## ORIK: Platform Integration
 
-Super 🙌 — hier ist eine **erweiterte, GitHub-fertige README-Sektion**,
-die du direkt in dein Repository übernehmen kannst.
-
-Sie enthält:
-
-* ✨ **Badges** (PyPI-Version, Build-Status, License, Downloads)
-* ⚠️ **Beta-Hinweis** zur ORIK-Plattform
-* 🧭 **API-Dokumentation** zum `/otm/validate`-Endpoint
-* 💡 **Client Usage Example**
-
-Alles auf **professionellem englischen Niveau**, so wie du es in reifen Open-Source-Projekten (z. B. FastAPI oder OpenAI-SDKs) findest.
-
 ---
 
 ## 🧩 Orik Tabular Client
